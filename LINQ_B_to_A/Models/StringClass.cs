@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace LINQ_B_to_A.Models
+﻿namespace LINQ_B_to_A.Models
 {
     public partial class StringClass
     {

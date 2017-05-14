@@ -54,7 +54,7 @@
                     ToUpper = objInv.Description.ToUpper(),
                     TrimEnd = objInv.Description.TrimEnd(),
                     TrimStart = objInv.Description.TrimStart()
-                }).Take(10);
+                }).Take(2);
 
             //Method Chain Format
             var objString2 = DtContext.InvoiceLines
@@ -70,7 +70,7 @@
                     ToUpper = objInv.Description.ToUpper(),
                     TrimEnd = objInv.Description.TrimEnd(),
                     TrimStart = objInv.Description.TrimStart()
-                }).Take(10);
+                }).Take(2);
 
             return PartialView("StringQueries", objString);
         }

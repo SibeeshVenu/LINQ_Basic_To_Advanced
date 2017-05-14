@@ -33,6 +33,7 @@
     }
 </table>
 <pre>
+    <code>
      public ActionResult JoinWithWhere()
         {
             var loadAllData = (from oOrders in DtContext.Orders
@@ -49,16 +50,17 @@
             var asMethodChain = DtContext.Orders.Join(DtContext.OrderLines, oOrders => oOrders.OrderID,
                     oOrderLines => oOrderLines.OrderID,
                     (oOrders, oOrderLines) => new { oOrders, oOrderLines })
-                .OrderBy(@o => @o.oOrders.OrderID)
-                .Select(@s => new OrderAndOrderLines()
+                .OrderBy(o => o.oOrders.OrderID)
+                .Select(s => new OrderAndOrderLines()
                 {
-                    OrderId = @s.oOrders.OrderID,
-                    Description = @s.oOrderLines.Description,
-                    Quantity = @s.oOrderLines.Quantity
+                    OrderId = s.oOrders.OrderID,
+                    Description = s.oOrderLines.Description,
+                    Quantity = s.oOrderLines.Quantity
                 }).Take(10);
 
             return PartialView(loadAllData);
         }
+    </code>
 </pre>
 
 

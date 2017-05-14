@@ -25,7 +25,7 @@
     public ActionResult DistinctSample()
         {
             var distictSample = (from oOrder in DtContext.OrderLines
-                                 select oOrder.Description).Distinct().ToList();
+                                 select oOrder.Description).Distinct().Take(10).ToList();
 
             //Method Chain Format
             var distictAsMethodChain = (DtContext.OrderLines.Select(oOrder => oOrder.Description)).Distinct().ToList();

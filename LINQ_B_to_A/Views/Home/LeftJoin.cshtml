@@ -50,12 +50,12 @@
             var lftJoinMethodChain = (DtContext.Orders.GroupJoin(DtContext.OrderLines,
                     oOrder => oOrder.OrderID, oOrderLine => oOrderLine.OrderID,
                     (oOrder, lftJoin) => new { oOrder, lftJoin })
-                .SelectMany(@sm => @sm.lftJoin.DefaultIfEmpty(), (@sm, afterJoin) => new { @sm, afterJoin })
-                .OrderByDescending(@o => @o.sm.oOrder.OrderID)
-                .Select(@s => new OrderAndOrderLines()
+                .SelectMany(sm => sm.lftJoin.DefaultIfEmpty(), (sm, afterJoin) => new { sm, afterJoin })
+                .OrderByDescending(o => o.sm.oOrder.OrderID)
+                .Select(s => new OrderAndOrderLines()
                 {
-                    OrderId = @s.sm.oOrder.OrderID,
-                    Description = @s.afterJoin.Description
+                    OrderId = s.sm.oOrder.OrderID,
+                    Description = s.afterJoin.Description
                 })).Take(10).ToList();
 
             return PartialView(loadAllData);

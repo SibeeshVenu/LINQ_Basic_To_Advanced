@@ -35,9 +35,14 @@
 </table>
 <caption>Select Many</caption>
 <pre>
-    public ActionResult SelectMany()
+     /// <summary>
+        /// Linq query with SelectMany
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SelectMany()
         {
-            var selectMany = DtContext.Orders.SelectMany(order => order.Invoices);
+            var selectMany = DtContext.Orders.SelectMany(order => order.Invoices).Take(10);
+            var select = DtContext.Orders.Select(order => order.Invoices).Take(10);
             return PartialView("SelectMany", selectMany);
         }
 </pre>

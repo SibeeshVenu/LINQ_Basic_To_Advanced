@@ -17,23 +17,23 @@
     }
 </style>
 
-    <table>
-        <caption>City Details</caption>
-        <tr>
-            <th>City ID</th>
-            <th>City Name</th>
-            <th>City Location</th>
-        </tr>
-@foreach (var @item in Model)
-{
+<table>
+    <caption>City Details</caption>
     <tr>
-    <td>@item.CityID</td>
-    <td>@item.CityName</td>
-    <td>@item.Location</td>
+        <th>City ID</th>
+        <th>City Name</th>
+        <th>City Location</th>
     </tr>
-}
-    </table>
-<caption>Equals Oerator</caption>
+    @foreach (var @item in Model)
+    {
+        <tr>
+            <td>@item.CityID</td>
+            <td>@item.CityName</td>
+            <td>@item.Location</td>
+        </tr>
+    }
+</table>
+
 <pre>
     public ActionResult EqualsSamples()
         {

@@ -26,11 +26,12 @@ namespace LINQ_B_to_A.Controllers
         public ActionResult SelectMany()
         {
             var selectMany = DtContext.Orders.SelectMany(order => order.Invoices).Take(10);
+            var select = DtContext.Orders.Select(order => order.Invoices).Take(10);
             return PartialView("SelectMany", selectMany);
         }
 
         /// <summary>
-        /// Linq query with Select Many
+        /// Linq query with Select
         /// </summary>
         /// <returns></returns>
         public ActionResult LoadAll()
@@ -113,10 +114,10 @@ namespace LINQ_B_to_A.Controllers
         public ActionResult DistinctSample()
         {
             var distictSample = (from oOrder in DtContext.OrderLines
-                                 select oOrder.Description).Distinct().ToList();
+                                 select oOrder.Description).Distinct().Take(10).ToList();
 
             //Method Chain Format
-            var distictAsMethodChain = (DtContext.OrderLines.Select(oOrder => oOrder.Description)).Distinct().ToList();
+            var distictAsMethodChain = (DtContext.OrderLines.Select(oOrder => oOrder.Description)).Distinct().Take(10).ToList();
 
             return PartialView(distictSample);
         }
@@ -228,7 +229,7 @@ namespace LINQ_B_to_A.Controllers
                                  ToUpper = objInv.Description.ToUpper(),
                                  TrimEnd = objInv.Description.TrimEnd(),
                                  TrimStart = objInv.Description.TrimStart()
-                             }).Take(10);
+                             }).Take(2);
 
             //Method Chain Format
             var objString2 = DtContext.InvoiceLines
@@ -244,7 +245,7 @@ namespace LINQ_B_to_A.Controllers
                     ToUpper = objInv.Description.ToUpper(),
                     TrimEnd = objInv.Description.TrimEnd(),
                     TrimStart = objInv.Description.TrimStart()
-                }).Take(10);
+                }).Take(2);
 
             return PartialView("StringQueries", objString);
         }
